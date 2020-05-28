@@ -1,0 +1,1 @@
+a = SomeClass.getInt();
