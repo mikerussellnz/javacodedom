@@ -37,6 +37,10 @@ public abstract class TypeDeclaration<T> implements CodeElement, Parent {
         _parent = parent;
     }
 
+    public TypeReference getReference() {
+        return TypeReference.get(this);
+    }
+
     public String getName() {
         return _name;
     }

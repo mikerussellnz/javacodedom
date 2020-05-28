@@ -8,7 +8,7 @@ public class MethodInvocationTest extends BaseTest {
 
   @Test
   public void testMethodInvocation() {
-    MethodInvocation methodInvocation = new MethodInvocation(TypeReference.get("this"),"multiArgFunction")
+    MethodInvocation methodInvocation = new MethodInvocation(new VariableReference("this"),"multiArgFunction")
       .addArgument(new Primitive("test arg"))
       .addArgument(new VariableReference("a"))
       .addArgument(new LocalFieldReference("b"));
@@ -26,7 +26,7 @@ public class MethodInvocationTest extends BaseTest {
 
   @Test
   public void testMethodInvocationWithGenericParameters() {
-    MethodInvocation methodInvocation = new MethodInvocation(TypeReference.get("this"),"multiArgGenericFunction")
+    MethodInvocation methodInvocation = new MethodInvocation(new VariableReference("this"),"multiArgGenericFunction")
       .addArgument(new Primitive("test arg"))
       .addArgument(new VariableReference("a"))
       .addArgument(new LocalFieldReference("b"))
