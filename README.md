@@ -14,9 +14,10 @@ Designed to automatically generate code without appending using string builders.
 Requires no additional dependencies. 
 
 ## Supports Generating these Code Constructs
-* Binary operators + - / * % < <= > >= == != || && | &
-* Pre and Post increment operators.
+* Binary operators + - / * % < <= > >= == != || && | & += -= /= *= %= |= ^= &=
+* Pre and Post increment and decrement operators.
 * Class and Interface Declarations
+* Support for nested inner classes / interfaces.
 * Cast Expression
 * Try, Catch, Finally exception handling.
 * Throwing of exceptions
@@ -35,7 +36,7 @@ Requires no additional dependencies.
 ## Todo
 * Different indentation styles (tabs / spaces, number of spaces)
 * Annotations Declarations
-* Operators like /= += -= \*= etc.
+* foreach loop
 * Java 8 stuff - Lambda expressions. 
 
 ## Example: Work in progress JDBC reader generator:
