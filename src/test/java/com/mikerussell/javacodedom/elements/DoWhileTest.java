@@ -14,7 +14,7 @@ public class DoWhileTest extends BaseTest {
     DoWhileLoop iteration = new DoWhileLoop(
       new LessThan(new VariableReference("i"), new Primitive(5))
     ).addStatements(
-      new ExpressionStatement(new MethodInvocation(new TypeReference("System.out"),"println")
+      new ExpressionStatement(new MethodInvocation(TypeReference.get("System.out"),"println")
         .addArgument(new Add(new Primitive("Hello World "), new VariableReference("i"))))
     );
     generateAndCompare("TestDoWhileLoop", iteration);

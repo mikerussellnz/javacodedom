@@ -30,8 +30,8 @@ public class ClassDeclarationTest extends BaseTest {
   public void testClassGenericParameters() {
     ClassDeclaration classDeclaration = new ClassDeclaration("TestClass");
     classDeclaration.addGenericParameter(new GenericParameter("T")
-      .addBound(new TypeReference(Integer.class))
-      .addBound(new TypeReference(String.class)));
+      .addBound(TypeReference.get(Integer.class))
+      .addBound(TypeReference.get(String.class)));
     classDeclaration.addGenericParameter(new GenericParameter("V"));
 
     generateAndCompare("TestClassGenericParameters", classDeclaration);
@@ -58,8 +58,8 @@ public class ClassDeclarationTest extends BaseTest {
   @Test
   public void testClassDeclarationFieldsAndMethods() {
     ClassDeclaration classDeclaration = new ClassDeclaration("TestClass")
-      .addField(new FieldDeclaration(PRIVATE, new TypeReference(int.class), "field1"))
-      .addField(new FieldDeclaration(PRIVATE, new TypeReference(String.class), "field2")
+      .addField(new FieldDeclaration(PRIVATE, TypeReference.get(int.class), "field1"))
+      .addField(new FieldDeclaration(PRIVATE, TypeReference.get(String.class), "field2")
         .initializeWith(new Primitive("Hello")))
       .addMethod(new MethodDeclaration(AccessModifier.PUBLIC, "methodOne"))
       .addMethod(new MethodDeclaration(AccessModifier.PUBLIC, "methodTwo"));
@@ -70,10 +70,10 @@ public class ClassDeclarationTest extends BaseTest {
   @Test
   public void testClassDeclarationExtendsAndImplements() {
     ClassDeclaration classDeclaration = new ClassDeclaration("TestClass")
-      .setExtends(new TypeReference("BaseClass"))
-      .addImplements(new TypeReference("Interface1"))
-      .addImplements(new TypeReference("Interface2"))
-      .addImplements(new TypeReference("Interface3"));
+      .setExtends(TypeReference.get("BaseClass"))
+      .addImplements(TypeReference.get("Interface1"))
+      .addImplements(TypeReference.get("Interface2"))
+      .addImplements(TypeReference.get("Interface3"));
 
     generateAndCompare("TestClassDeclarationExtendsAndImplements", classDeclaration);
   }

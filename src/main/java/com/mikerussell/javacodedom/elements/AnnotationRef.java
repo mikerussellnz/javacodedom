@@ -2,41 +2,43 @@ package com.mikerussell.javacodedom.elements;
 
 import com.mikerussell.javacodedom.GenerationContext;
 import com.mikerussell.javacodedom.OutputWriter;
+import com.mikerussell.javacodedom.core.CodeElement;
 
-public class AnnotationRef extends TypeReference {
+public class AnnotationRef implements CodeElement {
+	private TypeReference _typeReference;
 	private Primitive _value;
 
 	public AnnotationRef(String typeName) {
-		super(typeName);
+		_typeReference = TypeReference.get(typeName);
 	}
 
 	public AnnotationRef(String packageName, String className) {
-		super(packageName, className);
+		_typeReference = TypeReference.get(packageName, className);
 	}
 
 	public AnnotationRef(String typeName, Primitive value) {
-		super(typeName);
+		_typeReference = TypeReference.get(typeName);
 		_value = value;
 	}
 
 	public AnnotationRef(String packageName, String className, Primitive value) {
-		super(packageName, className);
+		_typeReference = TypeReference.get(packageName, className);
 		_value = value;
 	}
 
 	public AnnotationRef(Class type) {
-		super(type);
+		_typeReference = TypeReference.get(type);
 	}
 
 	public AnnotationRef(Class type, Primitive value) {
-		super(type);
+		_typeReference = TypeReference.get(type);
 		_value = value;
 	}
 
 	@Override
 	public void generate(OutputWriter output, GenerationContext context) {
 		output.append("@");
-		super.generate(output, context);
+		_typeReference.generate(output, context);
 		if (_value != null) {
 			output.append("(");
 			_value.generate(output, context);

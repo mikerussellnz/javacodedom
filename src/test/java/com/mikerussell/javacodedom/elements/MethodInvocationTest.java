@@ -8,7 +8,7 @@ public class MethodInvocationTest extends BaseTest {
 
   @Test
   public void testMethodInvocation() {
-    MethodInvocation methodInvocation = new MethodInvocation(new TypeReference("this"),"multiArgFunction")
+    MethodInvocation methodInvocation = new MethodInvocation(TypeReference.get("this"),"multiArgFunction")
       .addArgument(new Primitive("test arg"))
       .addArgument(new VariableReference("a"))
       .addArgument(new LocalFieldReference("b"));
@@ -26,12 +26,12 @@ public class MethodInvocationTest extends BaseTest {
 
   @Test
   public void testMethodInvocationWithGenericParameters() {
-    MethodInvocation methodInvocation = new MethodInvocation(new TypeReference("this"),"multiArgGenericFunction")
+    MethodInvocation methodInvocation = new MethodInvocation(TypeReference.get("this"),"multiArgGenericFunction")
       .addArgument(new Primitive("test arg"))
       .addArgument(new VariableReference("a"))
       .addArgument(new LocalFieldReference("b"))
-      .addGenericParameter(new TypeReference(int.class))
-      .addGenericParameter(new TypeReference(String.class));
+      .addGenericParameter(TypeReference.get(int.class))
+      .addGenericParameter(TypeReference.get(String.class));
     generateAndCompare("TestMethodInvocationWithGenericParameters", new ExpressionStatement(methodInvocation));
   }
 }

@@ -17,7 +17,7 @@ public class AssignTest extends BaseTest {
 
   @Test
   public void testAssignFromMethodCall() {
-    Assign statement = new Assign(new VariableReference("a"), new MethodInvocation(new TypeReference("SomeClass"), "getInt"));
+    Assign statement = new Assign(new VariableReference("a"), new MethodInvocation(TypeReference.get("SomeClass"), "getInt"));
     generateAndCompare("TestAssignFromMethodCall", statement);
   }
 

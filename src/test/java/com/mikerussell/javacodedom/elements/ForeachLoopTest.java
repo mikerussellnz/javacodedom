@@ -9,10 +9,10 @@ public class ForeachLoopTest extends BaseTest {
 
   @Test
   public void testForeachLoop() {
-    VariableDeclaration itemVar = new VariableDeclaration(new TypeReference(String.class), "str");
+    VariableDeclaration itemVar = new VariableDeclaration(TypeReference.get(String.class), "str");
     ForeachLoop iteration = new ForeachLoop(itemVar, new VariableReference("stringCollection")
     ).addStatements(
-      new ExpressionStatement(new MethodInvocation(new TypeReference("System.out"),"println")
+      new ExpressionStatement(new MethodInvocation(TypeReference.get("System.out"),"println")
         .addArgument(new Add(new Primitive("Hello World "), new VariableReference("str"))))
     );
     generateAndCompare("TestForeachLoop", iteration);

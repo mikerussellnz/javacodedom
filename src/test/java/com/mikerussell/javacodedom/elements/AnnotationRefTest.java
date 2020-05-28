@@ -21,7 +21,7 @@ public class AnnotationRefTest extends BaseTest {
 
   @Test
   public void testFieldAnnotation() {
-    FieldDeclaration fd = new FieldDeclaration(AccessModifier.PUBLIC, new TypeReference("int"), "test");
+    FieldDeclaration fd = new FieldDeclaration(AccessModifier.PUBLIC, TypeReference.get("int"), "test");
     fd.addAnnotation(new AnnotationRef("ModelClass"));
     fd.addAnnotation(new AnnotationRef("JsonSerializable"));
     generateAndCompare("TestAnnotationField", fd);

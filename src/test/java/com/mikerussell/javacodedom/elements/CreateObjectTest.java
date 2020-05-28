@@ -6,7 +6,7 @@ import org.junit.Test;
 public class CreateObjectTest extends BaseTest {
   @Test
   public void testCreateObject() {
-    CreateObject createObject = new CreateObject(new TypeReference("MultiArgConstructor"))
+    CreateObject createObject = new CreateObject(TypeReference.get("MultiArgConstructor"))
       .addArgument(new Primitive(5))
       .addArgument(new VariableReference("a"))
       .addArgument(new VariableReference("b"))
@@ -17,13 +17,13 @@ public class CreateObjectTest extends BaseTest {
 
   @Test
   public void testCreateObjectWithGenericParameters() {
-    CreateObject createObject = new CreateObject(new TypeReference("MultiArgConstructorWithGenerics"))
+    CreateObject createObject = new CreateObject(TypeReference.get("MultiArgConstructorWithGenerics"))
       .addArgument(new Primitive(5))
       .addArgument(new VariableReference("a"))
       .addArgument(new VariableReference("b"))
       .addArgument(new VariableReference("c"))
-      .addGenericParameter(new TypeReference(int.class))
-      .addGenericParameter(new TypeReference(String.class));
+      .addGenericParameter(TypeReference.get(int.class))
+      .addGenericParameter(TypeReference.get(String.class));
 
     generateAndCompare("TestCreateObjectWithGenericParameters", createObject);
   }

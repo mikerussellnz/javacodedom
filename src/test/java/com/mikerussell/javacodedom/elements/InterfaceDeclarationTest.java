@@ -8,8 +8,8 @@ public class InterfaceDeclarationTest extends BaseTest {
   @Test
   public void testInterfaceDeclarationFields() {
     InterfaceDeclaration classDeclaration = new InterfaceDeclaration("TestInterface");
-    classDeclaration.addField(new FieldDeclaration(AccessModifier.PRIVATE, new TypeReference(int.class), "field1"));
-    classDeclaration.addField(new FieldDeclaration(AccessModifier.PRIVATE, new TypeReference(String.class), "field2")
+    classDeclaration.addField(new FieldDeclaration(AccessModifier.PRIVATE, TypeReference.get(int.class), "field1"));
+    classDeclaration.addField(new FieldDeclaration(AccessModifier.PRIVATE, TypeReference.get(String.class), "field2")
       .initializeWith(new Primitive("Hello")));
 
     generateAndCompare("TestInterfaceDeclarationFields", classDeclaration);
@@ -19,8 +19,8 @@ public class InterfaceDeclarationTest extends BaseTest {
   public void testInterfaceGenericParameters() {
     InterfaceDeclaration classDeclaration = new InterfaceDeclaration("TestInterface");
     classDeclaration.addGenericParameter(new GenericParameter("T")
-      .addBound(new TypeReference(Integer.class))
-      .addBound(new TypeReference(String.class)));
+      .addBound(TypeReference.get(Integer.class))
+      .addBound(TypeReference.get(String.class)));
     classDeclaration.addGenericParameter(new GenericParameter("V"));
 
     generateAndCompare("TestInterfaceGenericParameters", classDeclaration);
@@ -39,8 +39,8 @@ public class InterfaceDeclarationTest extends BaseTest {
   @Test
   public void testInterfaceDeclarationFieldsAndMethods() {
     InterfaceDeclaration classDeclaration = new InterfaceDeclaration("TestInterface")
-      .addField(new FieldDeclaration(AccessModifier.PRIVATE, new TypeReference(int.class), "field1"))
-      .addField(new FieldDeclaration(AccessModifier.PRIVATE, new TypeReference(String.class), "field2")
+      .addField(new FieldDeclaration(AccessModifier.PRIVATE, TypeReference.get(int.class), "field1"))
+      .addField(new FieldDeclaration(AccessModifier.PRIVATE, TypeReference.get(String.class), "field2")
         .initializeWith(new Primitive("Hello")))
       .addMethod(new MethodDeclaration(AccessModifier.PUBLIC, "methodOne"))
       .addMethod(new MethodDeclaration(AccessModifier.PUBLIC, "methodTwo"));
@@ -51,9 +51,9 @@ public class InterfaceDeclarationTest extends BaseTest {
   @Test
   public void testInterfaceDeclarationExtendsAndImplements() {
     InterfaceDeclaration classDeclaration = new InterfaceDeclaration("TestInterface")
-      .addExtends(new TypeReference("Interface1"))
-      .addExtends(new TypeReference("Interface2"))
-      .addExtends(new TypeReference("Interface3"));
+      .addExtends(TypeReference.get("Interface1"))
+      .addExtends(TypeReference.get("Interface2"))
+      .addExtends(TypeReference.get("Interface3"));
 
     generateAndCompare("TestInterfaceDeclarationExtendsAndImplements", classDeclaration);
   }

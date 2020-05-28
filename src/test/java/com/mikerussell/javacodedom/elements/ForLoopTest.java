@@ -17,7 +17,7 @@ public class ForLoopTest extends BaseTest {
       new LessThan(new VariableReference("i"), new Primitive(5)),
       new PostIncrement(new VariableReference("i"))
     ).addStatements(
-      new ExpressionStatement(new MethodInvocation(new TypeReference("System.out"),"println")
+      new ExpressionStatement(new MethodInvocation(TypeReference.get("System.out"),"println")
         .addArgument(new Add(new Primitive("Hello World "), new VariableReference("i"))))
     );
     generateAndCompare("TestForLoop", iteration);

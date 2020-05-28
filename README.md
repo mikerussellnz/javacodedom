@@ -44,15 +44,15 @@ Requires no additional dependencies.
     CompilationUnit compilationUnit = new CompilationUnit();
     compilationUnit.setPackageName(outputPackageName);
     
-    TypeReference resultSetType = new TypeReference(java.sql.ResultSet.class);
-    TypeReference sqlExceptionType = new TypeReference(java.sql.SQLException.class);
+    TypeReference resultSetType = TypeReference.get(java.sql.ResultSet.class);
+    TypeReference sqlExceptionType = TypeReference.get(java.sql.SQLException.class);
     
     compilationUnit.addImport(resultSetType);
     compilationUnit.addImport(sqlExceptionType);
     
     ClassDeclaration classDeclaration = new ClassDeclaration(clz.getSimpleName() + "Reader");
     compilationUnit.addTypeDeclaration(classDeclaration);
-    TypeReference targetClass = new TypeReference(clz);
+    TypeReference targetClass = TypeReference.get(clz);
 
     MethodDeclaration readMethod = new MethodDeclaration(AccessModifier.PUBLIC, "read");
     readMethod.addThrows(sqlExceptionType);

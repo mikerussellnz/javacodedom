@@ -9,11 +9,11 @@ public class MethodDeclarationTest extends BaseTest {
   @Test
   public void testMethodDeclaration() {
     MethodDeclaration methodDeclaration = new MethodDeclaration(AccessModifier.PUBLIC, "")
-      .addThrows(new TypeReference(Exception.class))
-      .addArgument(new TypeReference(int.class), "a")
-      .addArgument(new TypeReference(String.class), "b")
+      .addThrows(TypeReference.get(Exception.class))
+      .addArgument(TypeReference.get(int.class), "a")
+      .addArgument(TypeReference.get(String.class), "b")
       .addStatements(
-        new VariableDeclaration(new TypeReference(String.class), "c")
+        new VariableDeclaration(TypeReference.get(String.class), "c")
           .initializeWith(new Primitive("Test"))
       );
     generateAndCompare("TestMethodDeclaration", methodDeclaration);
