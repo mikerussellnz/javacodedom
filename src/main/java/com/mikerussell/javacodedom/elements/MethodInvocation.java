@@ -4,8 +4,9 @@ import com.mikerussell.javacodedom.GenerationContext;
 import com.mikerussell.javacodedom.OutputWriter;
 import com.mikerussell.javacodedom.core.DelimiterSeparatedList;
 import com.mikerussell.javacodedom.core.Expression;
+import com.mikerussell.javacodedom.core.Statement;
 
-public class MethodInvocation implements Expression {
+public class MethodInvocation implements Expression, Statement {
 	private TypeReference _staticTypeReference;
 	private Expression _target;
 	private String _name;

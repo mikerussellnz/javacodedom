@@ -4,6 +4,7 @@ import com.mikerussell.javacodedom.GenerationContext;
 import com.mikerussell.javacodedom.OutputWriter;
 import com.mikerussell.javacodedom.core.Expression;
 import com.mikerussell.javacodedom.core.Statement;
+import com.mikerussell.javacodedom.elements.MethodInvocation;
 
 public class Assign implements Statement {
 	private Expression _left;
@@ -16,6 +17,11 @@ public class Assign implements Statement {
 	}
 
 	public Assign(Expression left, Expression right) {
+		_left = left;
+		_rightExpr = right;
+	}
+
+	public Assign(Expression left, MethodInvocation right) {
 		_left = left;
 		_rightExpr = right;
 	}
