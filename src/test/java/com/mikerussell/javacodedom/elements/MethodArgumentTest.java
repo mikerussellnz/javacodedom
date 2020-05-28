@@ -7,7 +7,7 @@ public class MethodArgumentTest extends BaseTest {
 
   @Test
   public void testMethodArgument() {
-    MethodArgument methodArgument = new MethodArgument(new TypeReference("String"), "parameter");
+    MethodArgument methodArgument = new MethodArgument(TypeReference.STRING, "parameter");
     generateAndCompare("TestMethodArgument", methodArgument);
   }
 }

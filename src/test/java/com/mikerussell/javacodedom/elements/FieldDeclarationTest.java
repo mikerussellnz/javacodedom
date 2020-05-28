@@ -13,19 +13,19 @@ public class FieldDeclarationTest extends BaseTest{
 
   @Test
   public void testFieldDeclaration() {
-    FieldDeclaration fieldDeclaration = new FieldDeclaration(PRIVATE, new TypeReference("int"), "a");
+    FieldDeclaration fieldDeclaration = new FieldDeclaration(PRIVATE, TypeReference.INT, "a");
     generateAndCompare("TestFieldDeclaration", fieldDeclaration);
   }
 
   @Test
   public void testFieldDeclarationFinal() {
-    FieldDeclaration fieldDeclaration = new FieldDeclaration(PUBLIC | FINAL | STATIC , new TypeReference("int"), "a");
+    FieldDeclaration fieldDeclaration = new FieldDeclaration(PUBLIC | FINAL | STATIC , TypeReference.INT, "a");
     generateAndCompare("TestFieldDeclarationConstant", fieldDeclaration);
   }
 
   @Test
   public void testFieldDeclarationWithInitializer() {
-    FieldDeclaration fieldDeclaration = new FieldDeclaration(PRIVATE, new TypeReference("int"), "a")
+    FieldDeclaration fieldDeclaration = new FieldDeclaration(PRIVATE, TypeReference.INT, "a")
       .initializeWith(new Primitive(5));
     generateAndCompare("TestFieldDeclarationWithInitializer", fieldDeclaration);
   }

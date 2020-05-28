@@ -27,7 +27,7 @@ Requires no additional dependencies.
 * Return values
 * Defining and using generic methods
 * Defining and using generic types
-* For loop, While loop, Do While loop
+* For loop, Foreach loop, While loop, Do While loop
 * Package statement
 * Import Statements
 * Creation of Objects and Arrays

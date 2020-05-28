@@ -11,7 +11,7 @@ public class MethodDeclaration implements CodeElement {
 	private String _name;
 	private DelimiterSeparatedList<TypeReference> _throws = new DelimiterSeparatedList<>(", ");
 	private DelimiterSeparatedList<MethodArgument> _arguments = new DelimiterSeparatedList<>(", ");
-	private TypeReference _returnType = new TypeReference("void");
+	private TypeReference _returnType = TypeReference.VOID;
 
 	private StatementCollection _statements = new StatementCollection();
 	private List<AnnotationRef> _annotations = new ArrayList<>();

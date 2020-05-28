@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class CompilationUnit implements CodeElement {
   private Package _package;
   private ArrayList<TypeReference> _imports = new ArrayList<>();
-  private ArrayList<ClassDeclaration> _typeDeclarations = new ArrayList<>();
+  private ArrayList<TypeDeclaration> _typeDeclarations = new ArrayList<>();
 
   public CompilationUnit() {
   }
@@ -35,11 +35,11 @@ public class CompilationUnit implements CodeElement {
     return this;
   }
 
-  public ArrayList<ClassDeclaration> getTypeDeclarations() {
+  public ArrayList<TypeDeclaration> getTypeDeclarations() {
     return _typeDeclarations;
   }
 
-  public CompilationUnit addTypeDeclaration(ClassDeclaration classDeclaration) {
+  public CompilationUnit addTypeDeclaration(TypeDeclaration classDeclaration) {
     _typeDeclarations.add(classDeclaration);
     return this;
   }
@@ -59,7 +59,7 @@ public class CompilationUnit implements CodeElement {
     if (_imports.size() > 0) {
       output.newLine();
     }
-    for (ClassDeclaration typeDeclaration: _typeDeclarations) {
+    for (TypeDeclaration typeDeclaration: _typeDeclarations) {
       typeDeclaration.generate(output, context);
     }
   }

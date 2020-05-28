@@ -6,14 +6,15 @@ import static com.mikerussell.javacodedom.core.AccessModifier.PROTECTED;
 
 import com.mikerussell.javacodedom.BaseTest;
 import com.mikerussell.javacodedom.core.AccessModifier;
+import com.sun.xml.internal.bind.v2.model.core.TypeRef;
 import org.junit.Test;
 
 public class ClassDeclarationTest extends BaseTest {
   @Test
   public void testClassDeclarationFields() {
     ClassDeclaration classDeclaration = new ClassDeclaration("TestClass");
-    classDeclaration.addField(new FieldDeclaration(PRIVATE, new TypeReference(int.class), "field1"));
-    classDeclaration.addField(new FieldDeclaration(PRIVATE, new TypeReference(String.class), "field2")
+    classDeclaration.addField(new FieldDeclaration(PRIVATE, TypeReference.INT, "field1"));
+    classDeclaration.addField(new FieldDeclaration(PRIVATE, TypeReference.STRING, "field2")
       .initializeWith(new Primitive("Hello")));
 
     generateAndCompare("TestClassDeclarationFields", classDeclaration);

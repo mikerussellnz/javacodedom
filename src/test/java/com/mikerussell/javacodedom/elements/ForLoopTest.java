@@ -13,7 +13,7 @@ public class ForLoopTest extends BaseTest {
   @Test
   public void testForLoop() {
     ForLoop iteration = new ForLoop(
-      new VariableDeclaration(new TypeReference("int"), "i").initializeWith(new Primitive(0)),
+      new VariableDeclaration(TypeReference.INT, "i").initializeWith(new Primitive(0)),
       new LessThan(new VariableReference("i"), new Primitive(5)),
       new PostIncrement(new VariableReference("i"))
     ).addStatements(
