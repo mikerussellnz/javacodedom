@@ -16,12 +16,6 @@ public class TryCatchFinally implements Statement {
 	public TryCatchFinally() {
 	}
 
-	public TryCatchFinally(StatementCollection statements, ArrayList<CatchClause> catchClauses, StatementCollection finallyStatements) {
-		_statements = statements;
-		_catchClauses = catchClauses;
-		_finallyStatements = finallyStatements;
-	}
-
 	public StatementCollection getStatements() {
 		return _statements;
 	}
