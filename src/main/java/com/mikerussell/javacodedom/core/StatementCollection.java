@@ -8,17 +8,17 @@ import java.util.ArrayList;
 
 public class StatementCollection extends ArrayList<Statement> {
 
-  public StatementCollection addStatement(Statement statement) {
-    if (statement instanceof MethodInvocation) {
+  public StatementCollection addStatement(CanActAsStatement statement) {
+    if (statement instanceof Statement) {
+      add((Statement) statement);
+    } else if (statement instanceof CanActAsStatement) {
       add(new ExpressionStatement((Expression) statement));
-    } else {
-      add(statement);
     }
     return this;
   }
 
-  public StatementCollection addStatements(Statement... statements) {
-    for (Statement statement : statements) {
+  public StatementCollection addStatements(CanActAsStatement... statements) {
+    for (CanActAsStatement statement : statements) {
       addStatement(statement);
     }
     return this;

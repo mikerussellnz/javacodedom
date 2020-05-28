@@ -32,15 +32,13 @@ public class MethodDeclaration implements CodeElement {
 		return _statements;
 	}
 
-	public MethodDeclaration addStatement(Statement statement) {
+	public MethodDeclaration addStatement(CanActAsStatement statement) {
 		_statements.addStatement(statement);
 		return this;
 	}
 
-	public MethodDeclaration addStatements(Statement... statements) {
-		for (Statement statement: statements) {
-			_statements.addStatement(statement);
-		}
+	public MethodDeclaration addStatements(CanActAsStatement... statements) {
+		_statements.addStatements(statements);
 		return this;
 	}
 

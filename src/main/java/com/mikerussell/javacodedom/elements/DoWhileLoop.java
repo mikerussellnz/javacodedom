@@ -2,6 +2,7 @@ package com.mikerussell.javacodedom.elements;
 
 import com.mikerussell.javacodedom.GenerationContext;
 import com.mikerussell.javacodedom.OutputWriter;
+import com.mikerussell.javacodedom.core.CanActAsStatement;
 import com.mikerussell.javacodedom.core.Expression;
 import com.mikerussell.javacodedom.core.Statement;
 import com.mikerussell.javacodedom.core.StatementCollection;
@@ -19,15 +20,13 @@ public class DoWhileLoop implements Statement {
     return _statements;
   }
 
-  public DoWhileLoop addStatement(Statement statement) {
+  public DoWhileLoop addStatement(CanActAsStatement statement) {
     _statements.addStatement(statement);
     return this;
   }
 
-  public DoWhileLoop addStatements(Statement... statements) {
-    for (Statement statement: statements) {
-      _statements.addStatement(statement);
-    }
+  public DoWhileLoop addStatements(CanActAsStatement... statements) {
+    _statements.addStatements(statements);
     return this;
   }
 

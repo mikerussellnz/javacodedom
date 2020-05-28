@@ -2,6 +2,7 @@ package com.mikerussell.javacodedom.elements;
 
 import com.mikerussell.javacodedom.GenerationContext;
 import com.mikerussell.javacodedom.OutputWriter;
+import com.mikerussell.javacodedom.core.CanActAsStatement;
 import com.mikerussell.javacodedom.core.Expression;
 import com.mikerussell.javacodedom.core.Statement;
 import com.mikerussell.javacodedom.core.StatementCollection;
@@ -23,15 +24,13 @@ public class ForeachLoop implements Statement {
 		return _statements;
 	}
 
-	public ForeachLoop addStatement(Statement statement) {
+	public ForeachLoop addStatement(CanActAsStatement statement) {
 		_statements.addStatement(statement);
 		return this;
 	}
 
-	public ForeachLoop addStatements(Statement... statements) {
-		for (Statement statement: statements) {
-			_statements.addStatement(statement);
-		}
+	public ForeachLoop addStatements(CanActAsStatement... statements) {
+		_statements.addStatements(statements);
 		return this;
 	}
 

@@ -2,10 +2,10 @@ package com.mikerussell.javacodedom.elements.operators;
 
 import com.mikerussell.javacodedom.GenerationContext;
 import com.mikerussell.javacodedom.OutputWriter;
+import com.mikerussell.javacodedom.core.CanActAsStatement;
 import com.mikerussell.javacodedom.core.Expression;
-import com.mikerussell.javacodedom.core.Statement;
 
-public class PostIncrement implements Statement {
+public class PostIncrement implements Expression, CanActAsStatement {
   private Expression _applyTo;
 
   public PostIncrement(Expression applyTo) {
@@ -15,6 +15,6 @@ public class PostIncrement implements Statement {
   @Override
   public void generate(OutputWriter output, GenerationContext context) {
     _applyTo.generate(output, context);
-    output.append("++;");
+    output.append("++");
   }
 }

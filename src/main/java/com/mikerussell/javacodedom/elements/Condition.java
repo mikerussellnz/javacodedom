@@ -2,6 +2,7 @@ package com.mikerussell.javacodedom.elements;
 
 import com.mikerussell.javacodedom.GenerationContext;
 import com.mikerussell.javacodedom.OutputWriter;
+import com.mikerussell.javacodedom.core.CanActAsStatement;
 import com.mikerussell.javacodedom.core.Expression;
 import com.mikerussell.javacodedom.core.Statement;
 import com.mikerussell.javacodedom.core.StatementCollection;
@@ -12,6 +13,10 @@ public class Condition implements Statement {
 	private Expression _expression;
 
 	public Condition() {
+	}
+
+	public Condition(Expression expression) {
+		_expression = expression;
 	}
 
 	public Condition(Expression expression, StatementCollection ifTrue, StatementCollection ifFalse) {
@@ -33,12 +38,12 @@ public class Condition implements Statement {
 		return _true;
 	}
 
-	public Condition addTrueStatement(Statement statement) {
+	public Condition addTrueStatement(CanActAsStatement statement) {
 		_true.addStatement(statement);
 		return this;
 	}
 
-	public Condition addTrueStatements(Statement... statements) {
+	public Condition addTrueStatements(CanActAsStatement... statements) {
 		_true.addStatements(statements);
 		return this;
 	}
@@ -47,12 +52,12 @@ public class Condition implements Statement {
 		return _false;
 	}
 
-	public Condition addFalseStatement(Statement statement) {
+	public Condition addFalseStatement(CanActAsStatement statement) {
 		_false.addStatement(statement);
 		return this;
 	}
 
-	public Condition addFalseStatements(Statement... statements) {
+	public Condition addFalseStatements(CanActAsStatement... statements) {
 		_false.addStatements(statements);
 		return this;
 	}

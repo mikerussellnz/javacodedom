@@ -2,6 +2,7 @@ package com.mikerussell.javacodedom.elements;
 
 import com.mikerussell.javacodedom.GenerationContext;
 import com.mikerussell.javacodedom.OutputWriter;
+import com.mikerussell.javacodedom.core.CanActAsStatement;
 import com.mikerussell.javacodedom.core.Statement;
 import com.mikerussell.javacodedom.core.StatementCollection;
 
@@ -25,15 +26,13 @@ public class TryCatchFinally implements Statement {
 		return _statements;
 	}
 
-	public TryCatchFinally addStatement(Statement statement) {
+	public TryCatchFinally addStatement(CanActAsStatement statement) {
 		_statements.addStatement(statement);
 		return this;
 	}
 
-	public TryCatchFinally addStatements(Statement... statements) {
-		for (Statement statement: statements) {
-			_statements.addStatement(statement);
-		}
+	public TryCatchFinally addStatements(CanActAsStatement... statements) {
+		_statements.addStatements(statements);
 		return this;
 	}
 
@@ -41,15 +40,13 @@ public class TryCatchFinally implements Statement {
 		return _finallyStatements;
 	}
 
-	public TryCatchFinally addFinallyStatement(Statement statement) {
+	public TryCatchFinally addFinallyStatement(CanActAsStatement statement) {
 		_finallyStatements.addStatement(statement);
 		return this;
 	}
 
-	public TryCatchFinally addFinallyStatements(Statement... statements) {
-		for (Statement statement: statements) {
-			_finallyStatements.addStatement(statement);
-		}
+	public TryCatchFinally addFinallyStatements(CanActAsStatement... statements) {
+		_finallyStatements.addStatements(statements);
 		return this;
 	}
 

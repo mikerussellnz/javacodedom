@@ -2,8 +2,8 @@ package com.mikerussell.javacodedom.elements;
 
 import com.mikerussell.javacodedom.GenerationContext;
 import com.mikerussell.javacodedom.OutputWriter;
+import com.mikerussell.javacodedom.core.CanActAsStatement;
 import com.mikerussell.javacodedom.core.CodeElement;
-import com.mikerussell.javacodedom.core.Statement;
 import com.mikerussell.javacodedom.core.StatementCollection;
 
 public class CatchClause implements CodeElement {
@@ -20,15 +20,13 @@ public class CatchClause implements CodeElement {
     return _statements;
   }
 
-  public CatchClause addStatement(Statement statement) {
+  public CatchClause addStatement(CanActAsStatement statement) {
     _statements.addStatement(statement);
     return this;
   }
 
-  public CatchClause addStatements(Statement... statements) {
-    for (Statement statement: statements) {
-      _statements.addStatement(statement);
-    }
+  public CatchClause addStatements(CanActAsStatement... statements) {
+    _statements.addStatements(statements);
     return this;
   }
 
