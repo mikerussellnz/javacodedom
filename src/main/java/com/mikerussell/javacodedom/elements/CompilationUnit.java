@@ -3,10 +3,11 @@ package com.mikerussell.javacodedom.elements;
 import com.mikerussell.javacodedom.GenerationContext;
 import com.mikerussell.javacodedom.OutputWriter;
 import com.mikerussell.javacodedom.core.CodeElement;
+import com.mikerussell.javacodedom.core.Parent;
 
 import java.util.ArrayList;
 
-public class CompilationUnit implements CodeElement {
+public class CompilationUnit implements CodeElement, Parent {
   private Package _package;
   private ArrayList<TypeReference> _imports = new ArrayList<>();
   private ArrayList<TypeDeclaration> _typeDeclarations = new ArrayList<>();
@@ -39,8 +40,13 @@ public class CompilationUnit implements CodeElement {
     return _typeDeclarations;
   }
 
-  public CompilationUnit addTypeDeclaration(TypeDeclaration classDeclaration) {
-    _typeDeclarations.add(classDeclaration);
+  public CompilationUnit addTypeDeclaration(TypeDeclaration typeDeclaration) {
+    if (typeDeclaration.getParent() != null) {
+      throw new IllegalArgumentException("Type: " + typeDeclaration.getName() + " is already added to: "
+          + typeDeclaration.getParent().getFullName());
+    }
+    typeDeclaration.setParent(this);
+    _typeDeclarations.add(typeDeclaration);
     return this;
   }
 
@@ -64,4 +70,8 @@ public class CompilationUnit implements CodeElement {
     }
   }
 
+  @Override
+  public String getFullName() {
+    return _package != null ? _package.getFullName() : "";
+  }
 }

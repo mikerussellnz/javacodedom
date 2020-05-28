@@ -23,7 +23,7 @@ public class JavaNameTypeReference extends TypeReference {
     }
 
     @Override
-    public String getPackageName() {
+    public String getFullPackageName() {
         return _package;
     }
 }

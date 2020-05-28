@@ -21,7 +21,7 @@ public class JavaClassTypeReference extends TypeReference {
     }
 
     @Override
-    public String getPackageName() {
+    public String getFullPackageName() {
         Package pkg =  _type.getPackage();
         return pkg == null ? null : pkg.getName();
     }

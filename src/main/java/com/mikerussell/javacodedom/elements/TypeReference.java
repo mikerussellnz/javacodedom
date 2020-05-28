@@ -43,12 +43,12 @@ public abstract class TypeReference implements CodeElement {
 	private DelimiterSeparatedList<TypeReference> _genericParameters = new DelimiterSeparatedList<>(", ");
 
 	public String getFullName() {
-		return getPackageName() != null ? getPackageName() + "." + getClassName() : getClassName();
+		return getFullPackageName() != null ? getFullPackageName() + "." + getClassName() : getClassName();
 	}
 
 	public abstract String getClassName();
 
-	public abstract String getPackageName();
+	public abstract String getFullPackageName();
 
 	public boolean needsImport() {
 		return !_isJavaLangClass;

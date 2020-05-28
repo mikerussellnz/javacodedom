@@ -5,13 +5,15 @@ import com.mikerussell.javacodedom.OutputWriter;
 import com.mikerussell.javacodedom.core.AccessModifier;
 import com.mikerussell.javacodedom.core.CodeElement;
 import com.mikerussell.javacodedom.core.DelimiterSeparatedList;
+import com.mikerussell.javacodedom.core.Parent;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class TypeDeclaration<T> implements CodeElement {
+public abstract class TypeDeclaration<T> implements CodeElement, Parent {
     private int _accessModifier = AccessModifier.PUBLIC;
     private String _name;
+    private Parent _parent;
     private ArrayList<FieldDeclaration> _fields = new ArrayList<>();
     private DelimiterSeparatedList<MethodDeclaration> _methods = new DelimiterSeparatedList<>("\n\n");
     private ArrayList<AnnotationRef> _annotations = new ArrayList<>();
@@ -25,6 +27,14 @@ public abstract class TypeDeclaration<T> implements CodeElement {
     public TypeDeclaration(int accessModifier, String name) {
         _accessModifier = accessModifier;
         _name = name;
+    }
+
+    Parent getParent() {
+        return _parent;
+    }
+
+    void setParent(Parent parent) {
+        _parent = parent;
     }
 
     public String getName() {
@@ -68,8 +78,26 @@ public abstract class TypeDeclaration<T> implements CodeElement {
     }
 
     public T addInnerType(TypeDeclaration innerType) {
+        if (innerType._parent != null) {
+            throw new IllegalArgumentException("Type: " + innerType.getName() + " is already added to: "
+                + innerType._parent.getFullName());
+        }
+        innerType._parent = this;
         _innerTypes.add(innerType);
         return (T)this;
+    }
+
+    @Override
+    public String getFullName() {
+        if (_parent != null) {
+            return _parent.getFullName() + "." + _name;
+        } else {
+            return _name;
+        }
+    }
+
+    public String getFullPackageName() {
+        return _parent != null ? _parent.getFullName() : "";
     }
 
     @Override

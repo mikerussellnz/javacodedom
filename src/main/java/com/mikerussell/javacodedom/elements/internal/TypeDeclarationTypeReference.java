@@ -16,7 +16,7 @@ public class TypeDeclarationTypeReference extends TypeReference {
     }
 
     @Override
-    public String getPackageName() {
-        return null; // todo:
+    public String getFullPackageName() {
+        return _type.getFullPackageName();
     }
 }
