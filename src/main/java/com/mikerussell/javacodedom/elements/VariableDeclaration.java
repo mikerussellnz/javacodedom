@@ -30,11 +30,15 @@ public class VariableDeclaration implements Statement {
 		return new VariableReference(_name);
 	}
 
-	@Override
-	public void generate(OutputWriter output, GenerationContext context) {
+	public void generateWithoutSemiColon(OutputWriter output, GenerationContext context) {
 		_type.generate(output, context);
 		output.append(" ");
 		output.append(_name);
+	}
+
+	@Override
+	public void generate(OutputWriter output, GenerationContext context) {
+		generateWithoutSemiColon(output, context);
 		if (_initializer != null) {
 			output.append(" = ");
 			_initializer.generate(output, context);

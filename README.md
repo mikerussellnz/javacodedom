@@ -36,7 +36,6 @@ Requires no additional dependencies.
 ## Todo
 * Different indentation styles (tabs / spaces, number of spaces)
 * Annotations Declarations
-* foreach loop
 * Java 8 stuff - Lambda expressions. 
 
 ## Example: Work in progress JDBC reader generator:
