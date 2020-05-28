@@ -2,6 +2,9 @@ package com.mikerussell.javacodedom.elements;
 
 import com.mikerussell.javacodedom.BaseTest;
 import com.mikerussell.javacodedom.core.ExpressionStatement;
+import com.mikerussell.javacodedom.elements.operators.Add;
+import com.mikerussell.javacodedom.elements.operators.LessThan;
+
 import org.junit.Test;
 
 public class WhileLoopTest extends BaseTest {

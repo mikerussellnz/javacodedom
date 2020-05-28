@@ -2,6 +2,10 @@ package com.mikerussell.javacodedom.elements;
 
 import com.mikerussell.javacodedom.BaseTest;
 import com.mikerussell.javacodedom.core.ExpressionStatement;
+import com.mikerussell.javacodedom.elements.operators.Add;
+import com.mikerussell.javacodedom.elements.operators.LessThan;
+import com.mikerussell.javacodedom.elements.operators.PostIncrement;
+
 import org.junit.Test;
 
 public class ForLoopTest extends BaseTest {

@@ -2,6 +2,8 @@ package com.mikerussell.javacodedom.elements;
 
 import com.mikerussell.javacodedom.BaseTest;
 import com.mikerussell.javacodedom.core.ExpressionStatement;
+import com.mikerussell.javacodedom.elements.operators.Equality;
+
 import org.junit.Test;
 
 public class ConditionTest extends BaseTest {

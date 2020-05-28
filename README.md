@@ -30,10 +30,11 @@ Requires no additional dependencies.
 * Package statement
 * Import Statements
 * Creation of Objects and Arrays
+* Annotations
 
 ## Todo
 * Different indentation styles (tabs / spaces, number of spaces)
-* Annotations
+* Annotations Declarations
 * Operators like /= += -= \*= etc.
 * Java 8 stuff - Lambda expressions. 
 
